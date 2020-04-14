@@ -1,1 +1,25 @@
-<div></div>
+<div>
+  <div class="container">
+    <div>
+      <input [(ngModel)]="task">
+      <button (click)="add()">Dodaj</button>
+    </div>
+  </div>
+  <div class="container">
+    <div *ngIf="tasksList.length; else noTasks">
+      <ul *ngFor="let task of tasksList">
+        <li>{{task}}</li>
+        <button (click)="done(task)">Zrobione</button>
+        <button (click)="remove(task)">Usuń</button>
+      </ul>
+    </div>
+    <ng-template #noTasks>
+      Nie ma żadnych zadań do wykonania!
+    </ng-template>
+    <div>Zadania wykonane: {{doneList.length}}
+      <ul *ngFor="let task of doneList">
+        <li>{{task}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
